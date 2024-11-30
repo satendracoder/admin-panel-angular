@@ -1,0 +1,11 @@
+/* Light theme */
+body.light-theme {
+    //for body only
+    --background-color: #f5f5f5;
+    --text-color: #000000;
+}
+
+body.light-theme {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}

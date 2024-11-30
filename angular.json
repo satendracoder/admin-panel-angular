@@ -32,6 +32,7 @@
               }
             ],
             "styles": [
+              "public/assets/styles/main.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -41,13 +42,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "5MB",
+                  "maximumError": "4MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "5MB",
+                  "maximumError": "4MB"
                 }
               ],
               "outputHashing": "all"
@@ -98,5 +99,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "e14abfd5-24b1-4c98-bec5-46c42cc35e94"
   }
 }

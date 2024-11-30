@@ -1,0 +1,54 @@
+<!-- User Profile Section -->
+<div class="user-profile" (click)="toggleDropdown()">
+    <img src="https://api.redmilbusinessmall.com//Docs/kycDocument/624658_202411291347561732868276462.png" alt="User"
+        class="user-avatar" />
+    <span class="user-name">JWT User</span>
+
+</div>
+
+<!-- Dropdown Menu -->
+<div class="dropdown-menu" *ngIf="isDropdownOpen">
+    <!-- Header Section with User Info -->
+    <div class="dropdown-header">
+        <div class="user-info">
+            <img src="https://api.redmilbusinessmall.com//Docs/kycDocument/624658_202411291347561732868276462.png"
+                alt="User" class="user-avatar" />
+            <div>
+                <p>JWT User</p>
+                <span>UI/UX Designer</span>
+            </div>
+        </div>
+        <div class="user_logout" (click)="logout()">
+            <svg viewBox="64 64 896 896" focusable="false" fill="currentColor" width="1em" height="1em">
+                <path
+                    d="M868 732h-70.3c-4.8 0-9.3 2.1-12.3 5.8-7 8.5-14.5 16.7-22.4 24.5a353.84 353.84 0 01-112.7 75.9A352.8 352.8 0 01512.4 866c-47.9 0-94.3-9.4-137.9-27.8a353.84 353.84 0 01-112.7-75.9 353.28 353.28 0 01-76-112.5C167.3 606.2 158 559.9 158 512s9.4-94.2 27.8-137.8c17.8-42.1 43.4-80 76-112.5s70.5-58.1 112.7-75.9c43.6-18.4 90-27.8 137.9-27.8 47.9 0 94.3 9.3 137.9 27.8 42.2 17.8 80.1 43.4 112.7 75.9 7.9 7.9 15.3 16.1 22.4 24.5 3 3.7 7.6 5.8 12.3 5.8H868c6.3 0 10.2-7 6.7-12.3C798 160.5 663.8 81.6 511.3 82 271.7 82.6 79.6 277.1 82 516.4 84.4 751.9 276.2 942 512.4 942c152.1 0 285.7-78.8 362.3-197.7 3.4-5.3-.4-12.3-6.7-12.3zm88.9-226.3L815 393.7c-5.3-4.2-13-.4-13 6.3v76H488c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h314v76c0 6.7 7.8 10.5 13 6.3l141.9-112a8 8 0 000-12.6z">
+                </path>
+            </svg>
+        </div>
+    </div>
+
+    <div class="dropdown-items">
+        <div class="dropdown-item" (click)="setActiveMenu('profile')" [class.active]="activeMenu === 'profile'">
+            <div class="profile_icon"><mat-icon>person</mat-icon> Profile</div>
+            <ul class="sub-menu" *ngIf="activeMenu === 'profile'">
+                <li><mat-icon>edit</mat-icon>Edit Profile</li>
+                <li><mat-icon>view_timeline</mat-icon>View Profile</li>
+                <li><mat-icon>playlist_add_check_circle</mat-icon>Social Profile</li>
+                <li><mat-icon>payments</mat-icon>Billing</li>
+                <li><mat-icon>login</mat-icon>Logout</li>
+            </ul>
+        </div>
+
+        <div class="dropdown-item" (click)="setActiveMenu('settings')" [class.active]="activeMenu === 'settings'">
+            <div class="profile_icon"><mat-icon>settings</mat-icon> Settings</div>
+            <ul class="sub-menu" *ngIf="activeMenu === 'settings'">
+                <li><mat-icon>help</mat-icon>Support</li>
+                <li><mat-icon>manage_accounts</mat-icon>Account Settings</li>
+                <li><mat-icon>lock</mat-icon>Privacy Settings</li>
+                <li><mat-icon>comment</mat-icon>Feedback</li>
+                <li><mat-icon>history</mat-icon>History</li>
+            </ul>
+        </div>
+    </div>
+
+</div>

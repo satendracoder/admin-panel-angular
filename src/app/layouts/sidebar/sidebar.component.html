@@ -1,0 +1,92 @@
+<div class="sidebar">
+    <!-- Logo Section -->
+    <div class="logo">
+        <!-- <img src="https://ssbr-inet-platform.vercel.app/assets/images/global/ssbrlogo.svg" alt="" srcset=""> -->
+        <h3>My App</h3>
+    </div>
+
+    <!-- Menu Items -->
+    <div class="menu">
+        <div class="menu-group">
+            <h4>Dashboard</h4>
+            <div class="menu-item" (click)="toggleDropdown('dashboard')">
+                <span>📊 Dashboard</span>
+                <span [class.rotate]="isOpen['dashboard']">
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                </span>
+            </div>
+            <div *ngIf="isOpen['dashboard']" @dropdownAnimation>
+                <div class="submenu-item">Overview</div>
+                <div class="submenu-item">Reports</div>
+            </div>
+
+            <div class="menu-item">
+                <span>📦 Components</span>
+            </div>
+        </div>
+
+        <div class="menu-group">
+            <h4>Widget</h4>
+            <div class="menu-item">
+                <span>📈 Statistics</span>
+            </div>
+            <div class="menu-item">
+                <span>📄 Data</span>
+            </div>
+            <div class="menu-item">
+                <span>📊 Chart</span>
+            </div>
+        </div>
+
+        <div class="menu-group">
+            <h4>Widget</h4>
+            <div class="menu-item">
+                <span>📈 Statistics</span>
+            </div>
+            <div class="menu-item">
+                <span>📄 Data</span>
+            </div>
+            <div class="menu-item">
+                <span>📊 Chart</span>
+            </div>
+        </div>
+
+        <div class="menu-group">
+            <h4>Widget</h4>
+            <div class="menu-item">
+                <span>📈 Statistics</span>
+            </div>
+            <div class="menu-item">
+                <span>📄 Data</span>
+            </div>
+            <div class="menu-item">
+                <span>📊 Chart</span>
+            </div>
+        </div>
+
+        <div class="menu-group">
+            <h4>Admin Panel</h4>
+            <div class="menu-item">
+                <span>📚 Online Courses</span>
+            </div>
+            <div class="menu-item">
+                <span>👤 Membership</span>
+            </div>
+            <div class="menu-item">
+                <span>❓ Helpdesk</span>
+            </div>
+            <div class="menu-item">
+                <span>🧾 Invoice</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Profile Section -->
+    <div class="profile" (click)="toggleProfileMenu()">
+        <img src="https://mantisdashboard.io/angular/default/assets/images/user/avatar-2.jpg" alt="User Avatar" />
+        <div class="profile-info">
+            <p>JWT User</p>
+            <small>UI/UX Designer</small>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+/* Dark theme */
+body.dark-theme {
+    //for body only
+    --background-color: #101426;
+    --text-color: #ddd;
+}
+
+body.dark-theme {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}

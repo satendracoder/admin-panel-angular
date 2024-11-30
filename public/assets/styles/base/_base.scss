@@ -1,0 +1,337 @@
+/* Global base styles */
+/* Reset or Normalize Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: #F8F8F8;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 0.5rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+/* Paragraphs */
+p {
+    margin-bottom: 1rem;
+}
+
+
+
+/* Lists */
+ul,
+ol {
+    padding-left: 2rem;
+}
+
+// li {}
+
+
+
+
+
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Utility Classes */
+
+/* Margin Utilities */
+.m-0 {
+    margin: 0 !important;
+}
+
+.m-1 {
+    margin: 0.5rem !important;
+}
+
+.m-2 {
+    margin: 1rem !important;
+}
+
+.m-3 {
+    margin: 1.5rem !important;
+}
+
+.m-4 {
+    margin: 2rem !important;
+}
+
+/* Padding Utilities */
+.p-0 {
+    padding: 0 !important;
+}
+
+.p-1 {
+    padding: 0.5rem !important;
+}
+
+.p-2 {
+    padding: 1rem !important;
+}
+
+.p-3 {
+    padding: 1.5rem !important;
+}
+
+.p-4 {
+    padding: 2rem !important;
+}
+
+/* Margin Top */
+.mt-0 {
+    margin-top: 0 !important;
+}
+
+.mt-1 {
+    margin-top: 0.5rem !important;
+}
+
+.mt-2 {
+    margin-top: 1rem !important;
+}
+
+.mt-3 {
+    margin-top: 1.5rem !important;
+}
+
+.mt-4 {
+    margin-top: 2rem !important;
+}
+
+/* Margin Bottom */
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.mb-1 {
+    margin-bottom: 0.5rem !important;
+}
+
+.mb-2 {
+    margin-bottom: 1rem !important;
+}
+
+.mb-3 {
+    margin-bottom: 1.5rem !important;
+}
+
+.mb-4 {
+    margin-bottom: 2rem !important;
+}
+
+/* Text Alignment */
+.text-left {
+    text-align: left !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-justify {
+    text-align: justify !important;
+}
+
+/* Font Size Utilities */
+.fs-1 {
+    font-size: 1rem !important;
+}
+
+.fs-2 {
+    font-size: 1.25rem !important;
+}
+
+.fs-3 {
+    font-size: 1.5rem !important;
+}
+
+.fs-4 {
+    font-size: 2rem !important;
+}
+
+/* Font Weight Utilities */
+.fw-normal {
+    font-weight: normal !important;
+}
+
+.fw-bold {
+    font-weight: bold !important;
+}
+
+.fw-light {
+    font-weight: 300 !important;
+}
+
+/* Display Utilities */
+.d-block {
+    display: block !important;
+}
+
+.d-inline {
+    display: inline !important;
+}
+
+.d-inline-block {
+    display: inline-block !important;
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+.d-none {
+    display: none !important;
+}
+
+/* Flexbox Utilities */
+.justify-start {
+    justify-content: flex-start !important;
+}
+
+.justify-center {
+    justify-content: center !important;
+}
+
+.justify-end {
+    justify-content: flex-end !important;
+}
+
+.justify-between {
+    justify-content: space-between !important;
+}
+
+.align-center {
+    align-items: center !important;
+}
+
+/* Width Utilities */
+.w-25 {
+    width: 25% !important;
+}
+
+.w-50 {
+    width: 50% !important;
+}
+
+.w-75 {
+    width: 75% !important;
+}
+
+.w-100 {
+    width: 100% !important;
+}
+
+/* Height Utilities */
+.h-25 {
+    height: 25% !important;
+}
+
+.h-50 {
+    height: 50% !important;
+}
+
+.h-75 {
+    height: 75% !important;
+}
+
+.h-100 {
+    height: 100% !important;
+}
+
+/* Border Utilities */
+.border {
+    border: 1px solid #ccc !important;
+}
+
+.border-0 {
+    border: none !important;
+}
+
+.border-top {
+    border-top: 1px solid #ccc !important;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #ccc !important;
+}
+
+.border-left {
+    border-left: 1px solid #ccc !important;
+}
+
+.border-right {
+    border-right: 1px solid #ccc !important;
+}
+
+/* Background Color Utilities */
+.bg-primary {
+    background-color: #007bff !important;
+}
+
+.bg-secondary {
+    background-color: #6c757d !important;
+}
+
+.bg-success {
+    background-color: #28a745 !important;
+}
+
+.bg-danger {
+    background-color: #dc3545 !important;
+}
+
+.bg-warning {
+    background-color: #ffc107 !important;
+}
+
+.bg-info {
+    background-color: #17a2b8 !important;
+}
+
+.bg-light {
+    background-color: #f8f9fa !important;
+}
+
+.bg-dark {
+    background-color: #343a40 !important;
+}
+
+.bg-white {
+    background-color: #fff !important;
+}

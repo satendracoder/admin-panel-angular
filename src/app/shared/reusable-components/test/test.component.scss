@@ -1,0 +1,175 @@
+/* General Styling */
+.user-profile {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-name {
+    font-weight: bold;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    top: 65px;
+    right: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: auto;
+    z-index: 1000;
+    padding: 10px 0px;
+    transition: opacity 2s ease;
+    animation: slideDown 0.5s ease forwards;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Dropdown Header */
+.dropdown-header {
+    display: flex;
+    padding: 10px 10px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+
+    .user_logout {
+        cursor: pointer;
+    }
+}
+
+.user-info {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+
+    p {
+        font-size: 16px;
+        margin: 0;
+        font-weight: 600;
+    }
+
+    span {
+        font-size: 10px;
+        color: gray;
+        margin-bottom: 0;
+        top: 15px;
+        position: absolute;
+    }
+
+
+}
+
+
+/* Dropdown Items */
+/* Dropdown Items Container */
+.dropdown-items {
+    display: flex;
+    /* Display items in a row */
+    flex-direction: row;
+    /* Align items horizontally */
+    justify-content: space-between;
+    /* Center items horizontally */
+    align-items: center;
+    /* Center items vertically */
+    padding: 0px 0px;
+    gap: 0px;
+    border-bottom: 1px solid #ddd;
+    /* Add space between items */
+}
+
+/* Dropdown Item */
+.dropdown-item {
+    flex: 1;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    /* Center the text */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+
+    .profile_icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+}
+
+.dropdown-item:hover {
+    color: #007bff;
+    background-color: #eee;
+}
+
+/* Active State for Dropdown Item */
+.dropdown-item.active {
+    color: #007bff;
+    font-weight: bold;
+    border-bottom: 2px solid #007bff;
+    background-color: #eee;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+/* Submenu Styling - Full Width */
+.sub-menu {
+    display: none;
+    /* Hidden by default */
+    position: absolute;
+    /* Position submenu */
+    top: 100%;
+    /* Place submenu below the parent item */
+    left: 0;
+    /* Align submenu with the left edge of the parent */
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    /* Full width */
+    list-style: none;
+    padding: 0px 0;
+    z-index: 1000;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* Show Submenu on Active */
+.dropdown-item.active .sub-menu {
+    display: flex;
+    /* Display submenu when active */
+    flex-direction: column;
+    align-items: flex-start;
+    /* Left align items */
+    padding: 0px 0;
+}
+
+.sub-menu li {
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    color: black;
+    transition: background-color 0.3s;
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+}
+
+.sub-menu li:hover {
+    background-color: #eaeaea;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        width: auto;
+        right: 5%;
+    }
+}
