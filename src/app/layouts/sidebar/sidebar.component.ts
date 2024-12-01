@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MateriallistModule } from '../../shared/materiallist/materiallist.module';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Router } from '@angular/router';
@@ -21,14 +21,20 @@ import { Router } from '@angular/router';
     ]),
   ],
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit{
+  
   isOpen: { [key: string]: boolean } = {}; // Tracks dropdown open states
-   activeMenu: string = ''; // Tracks active main menu
+  activeMenu: string = ''; // Tracks active main menu
   activeSubmenu: string = ''; // Tracks active submenu
 
   router = inject(Router);
 
+  ngOnInit(): void {
+    this.toggleDropdown('dashboard', true)
+  }
+
   toggleDropdown(menuKey: string, hasChildren: boolean): void {
+
   if (!hasChildren) {
     // If no children, directly set it as active menu
     this.setActiveMenu(menuKey);
@@ -56,6 +62,7 @@ setActiveSubmenu(submenuKey: string): void {
   this.activeSubmenu = submenuKey;
 }
 
+  
   toggleProfileMenu(): void {
     alert('Profile menu clicked!');
   }
@@ -63,20 +70,67 @@ setActiveSubmenu(submenuKey: string): void {
 
 menuItems:any = [
   {
-    heading: 'Dashboard',
+    //heading: 'Dashboard',
     menus: [
       {
         label: 'Dashboard',
-        icon: '📊',
+        icon: 'dashboard',
         key: 'dashboard',
         url: '/dashboard', // URL for main menu
         children: [
-          { label: 'Overview', key: 'overview',  url: '/dashboard/overview'},
-          { label: 'Reports', key: 'reports', url: '/dashboard/reports' },
+          { label: 'Overview Dashboard', key: 'overview',icon:'overview', url: '/dashboard/overview' },
+          { label: 'Instructor Dashboard', key: 'instructor',icon:'developer_guide',  url: '/dashboard/instructor'},
+          { label: 'Student Dashboard', key: 'student',icon:'overview', url: '/dashboard/reports' },
         ],
       },
     ],
   },
+
+  
+  {
+    heading: 'All-Programs',
+    menus: [
+      {
+        label: 'Tutorials',
+        icon: '📚',
+        key: 'tutorial',
+        children: [
+          { label: 'Add Category', key: 'addcategory',icon:'add_circle', url: '/courses/basic'},
+          { label: 'Create Article', key: 'createarticle',icon:'post_add', url: '/courses/basic'},
+          { label: 'Articles List', key: 'articlelist',icon:'list_alt', url: '/courses/advanced'  },
+        ],
+      },
+
+      {
+        label: 'Quizzes',
+        icon: 'quiz',
+        key: 'quizzes',
+        children: [
+           { label: 'Add Category', key: 'addcategory',icon:'add_circle', url: '/courses/basic'},
+          { label: 'Create Quiz', key: 'createarticle',icon:'post_add', url: '/courses/basic'},
+          { label: 'Quizzes List', key: 'articlelist',icon:'list_alt', url: '/courses/advanced'  },
+        ],
+      },
+
+
+      {
+        label: 'Exercises',
+        icon: 'bug_report',
+        key: 'exercises',
+        children: [
+           { label: 'Add Category', key: 'addcategory',icon:'add_circle', url: '/courses/basic'},
+          { label: 'Create Exercise', key: 'createarticle',icon:'post_add', url: '/courses/basic'},
+          { label: 'Exercises List', key: 'articlelist',icon:'list_alt', url: '/courses/advanced'  },
+        ],
+      },
+
+
+      { label: 'Membership', icon: '👤', key: 'membership', url: '/membership'},
+      { label: 'Helpdesk', icon: '❓', key: 'helpdesk' },
+      { label: 'Invoice', icon: '🧾', key: 'invoice' },
+    ],
+  },
+
   {
     heading: 'Widget',
     menus: [
@@ -85,7 +139,8 @@ menuItems:any = [
       { label: 'Chart', icon: '📊', key: 'chart', url: 'https://google.com'},
     ],
   },
-  {
+
+   {
     heading: 'Admin Panel',
     menus: [
       {
@@ -93,8 +148,8 @@ menuItems:any = [
         icon: '📚',
         key: 'courses',
         children: [
-          { label: 'Basic', key: 'basic', url: '/courses/basic'},
-          { label: 'Advanced', key: 'advanced', url: '/courses/advanced'  },
+          { label: 'Basic', key: 'basic',icon:'overview', url: '/courses/basic'},
+          { label: 'Advanced', key: 'advanced',icon:'overview', url: '/courses/advanced'  },
         ],
       },
       { label: 'Membership', icon: '👤', key: 'membership', url: '/membership'},

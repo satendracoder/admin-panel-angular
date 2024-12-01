@@ -71,6 +71,13 @@
     //border-radius: 5px;
     font-size: 14px;
     transition: background 0.3s;
+
+    .menu-item-icons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5px;
+    }
 }
 
 .menu-item.active {
@@ -83,22 +90,27 @@
 }
 
 .submenu-item {
-    padding: 10px 45px;
+    padding: 10px 30px;
     margin: 5px 0px;
     font-size: 14px;
     color: #555;
-    cursor: pointer;
+    cursor: pointer !important;
     transition: opacity 2s ease;
     animation: slideDown 0.5s ease forwards;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .submenu-item.active {
     font-weight: bold;
     color: #007bff;
+    background: #0cf9e324;
+    border-right: 3px solid #007bff;
 }
 
 .submenu-item:hover {
-    background-color: #f9f9f9;
+    color: #007bff;
     transform: scale(1.1);
 }
 

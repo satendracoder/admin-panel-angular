@@ -64,25 +64,22 @@
                     border-radius: 0px;
                     height: 100%;
                     border-right: 1px solid #eee;
-                    //transition: transform 0.3s ease;
-
-                    // Ensure that the sidebar appears when opened and hidden when closed on mobile
-                    display: block; // Make sure it's always there on larger screens
                 }
             }
+
         }
     }
 
     // Mobile-specific styles
     @media screen and (max-width: 768px) {
         .tutorial_main .mat-drawer-container .mat-drawer {
-            display: none;
+            position: absolute; // Make the sidebar overlay the content
+            z-index: 1200;
             /* Hide the sidebar by default on mobile */
         }
 
-        .tutorial_main .mat-drawer-container .mat-drawer[opened] {
-            display: block;
-            /* Show the sidebar when 'opened' is true */
+        .tutorial_main .mat-drawer-container .mat-drawer-content {
+            margin: 0; // No margin adjustment since sidebar overlays the content
         }
     }
 }

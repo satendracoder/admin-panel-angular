@@ -20,7 +20,10 @@
                 <!-- Main Menu Item -->
                 <div class="menu-item" [class.active]="activeMenu === menu.key" (click)="navigate(menu)"
                     (click)="toggleDropdown(menu.key, !!menu?.children)">
-                    <span>{{ menu.icon }} {{ menu.label }}</span>
+                    <div class="menu-item-icons">
+                        <span><mat-icon>{{ menu.icon }}</mat-icon></span>
+                        <span>{{ menu.label }}</span>
+                    </div>
                     <!-- Show dropdown arrow if children exist -->
 
                     @if (menu.children) {
@@ -36,7 +39,10 @@
                     @for (child of menu.children; track $index) {
                     <div class="submenu-item" [class.active]="activeSubmenu === child.key"
                         (click)="setActiveSubmenu(child.key)">
-                        {{ child.label }}
+                        <span class="material-symbols-outlined">
+                            {{child?.icon}}
+                        </span>
+                        <span>{{ child.label }}</span>
                     </div>
                     }
                 </div>

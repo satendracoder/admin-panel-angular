@@ -3,7 +3,7 @@
 
         <div class="tutorial_main">
             <mat-drawer-container class="example-container">
-                <mat-drawer #sidebar mode="side" [opened]="isSidebarOpen">
+                <mat-drawer #sidebar [mode]="sidebarMode" [opened]="isSidebarOpen">
                     <app-sidebar></app-sidebar>
                 </mat-drawer>
 
@@ -11,9 +11,9 @@
                     [ngClass]="{'content-expanded': isSidebarOpen, 'content-collapsed': !isSidebarOpen}">
                     <div class="tutorial_top">
                         <mat-toolbar>
-                            <button mat-icon-button class="example-icon"
+                            <button (click)="toggleSidebar()" mat-icon-button class="example-icon"
                                 aria-label="Example icon-button with menu icon">
-                                <mat-icon (click)="toggleSidebar()">
+                                <mat-icon>
                                     <svg viewBox="64 64 896 896" focusable="false" fill="currentColor" width="1em"
                                         height="1em">
                                         <path
@@ -22,7 +22,7 @@
                                     </svg>
                                 </mat-icon>
                             </button>
-                            <span>
+                            <span style="margin-left: 10px;">
                                 <app-search-box></app-search-box>
                             </span>
                             <span class="example-spacer"></span>
