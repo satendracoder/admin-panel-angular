@@ -3,10 +3,11 @@ import { MateriallistModule } from '../../shared/materiallist/materiallist.modul
 import { SidebarComponent } from "../sidebar/sidebar.component";
 import { TestComponent } from "../../shared/reusable-components/test/test.component";
 import { RouterOutlet } from '@angular/router';
+import { SearchBoxComponent } from "../../shared/reusable-components/search-box/search-box.component";
 
 @Component({
   selector: 'app-tutorial-layout',
-  imports: [MateriallistModule, SidebarComponent, TestComponent],
+  imports: [MateriallistModule, SidebarComponent, TestComponent, SearchBoxComponent],
   templateUrl: './tutorial-layout.component.html',
   styleUrl: './tutorial-layout.component.scss'
 })

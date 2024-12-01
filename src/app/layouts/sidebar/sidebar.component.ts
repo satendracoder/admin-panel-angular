@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MateriallistModule } from '../../shared/materiallist/materiallist.module';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -25,29 +26,93 @@ export class SidebarComponent {
    activeMenu: string = ''; // Tracks active main menu
   activeSubmenu: string = ''; // Tracks active submenu
 
-  toggleDropdown(menu: string): void {
-    // Close all other dropdowns
+  router = inject(Router);
+
+  toggleDropdown(menuKey: string, hasChildren: boolean): void {
+  if (!hasChildren) {
+    // If no children, directly set it as active menu
+    this.setActiveMenu(menuKey);
+    return;
+  }
+
+  // Close other dropdowns
   Object.keys(this.isOpen).forEach((key) => {
-    if (key !== menu) {
+    if (key !== menuKey) {
       this.isOpen[key] = false;
     }
   });
 
-  // Toggle the clicked dropdown
-  this.isOpen[menu] = !this.isOpen[menu];
-  this.setActiveMenu(menu); // Set active menu on toggle
-  }
+  // Toggle current dropdown
+  this.isOpen[menuKey] = !this.isOpen[menuKey];
+  this.setActiveMenu(menuKey);
+}
 
-   setActiveMenu(menu: string): void {
-    this.activeMenu = menu;
-    this.activeSubmenu = ''; // Reset submenu when changing menu
-  }
+setActiveMenu(menuKey: string): void {
+  this.activeMenu = menuKey;
+  this.activeSubmenu = ''; // Reset active submenu
+}
 
-  setActiveSubmenu(submenu: string): void {
-    this.activeSubmenu = submenu;
-  }
+setActiveSubmenu(submenuKey: string): void {
+  this.activeSubmenu = submenuKey;
+}
 
   toggleProfileMenu(): void {
     alert('Profile menu clicked!');
+  }
+
+
+menuItems:any = [
+  {
+    heading: 'Dashboard',
+    menus: [
+      {
+        label: 'Dashboard',
+        icon: '📊',
+        key: 'dashboard',
+        url: '/dashboard', // URL for main menu
+        children: [
+          { label: 'Overview', key: 'overview',  url: '/dashboard/overview'},
+          { label: 'Reports', key: 'reports', url: '/dashboard/reports' },
+        ],
+      },
+    ],
+  },
+  {
+    heading: 'Widget',
+    menus: [
+      { label: 'Statistics', icon: '📈', key: 'statistics', url: '/statistics' },
+      { label: 'Data', icon: '📄', key: 'data', url: '/data'},
+      { label: 'Chart', icon: '📊', key: 'chart', url: 'https://google.com'},
+    ],
+  },
+  {
+    heading: 'Admin Panel',
+    menus: [
+      {
+        label: 'Online Courses',
+        icon: '📚',
+        key: 'courses',
+        children: [
+          { label: 'Basic', key: 'basic', url: '/courses/basic'},
+          { label: 'Advanced', key: 'advanced', url: '/courses/advanced'  },
+        ],
+      },
+      { label: 'Membership', icon: '👤', key: 'membership', url: '/membership'},
+      { label: 'Helpdesk', icon: '❓', key: 'helpdesk' },
+      { label: 'Invoice', icon: '🧾', key: 'invoice' },
+    ],
+  },
+];
+
+
+navigate(menu: any): void {
+    if (menu.url) {
+      // Check if it's an external link
+      if (menu.url.startsWith('http')) {
+        window.open(menu.url, '_blank'); // Open external links in new tab
+      } else {
+        this.router.navigate([menu.url]); // Navigate to Angular routes
+      }
+    }
   }
 }

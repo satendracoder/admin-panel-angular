@@ -1,0 +1,14 @@
+<form (ngSubmit)="onSearchSubmit()">
+    <div class="search-box">
+        <div class="search-item">
+            <input type="search" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" (input)="onSearch()"
+                placeholder="Search..." id="searchInput">
+            <mat-icon>search</mat-icon>
+        </div>
+        <div *ngIf="filteredResults.length > 0" class="dropdown">
+            <div *ngFor="let item of filteredResults" class="dropdown-item" (click)="selectItem(item)">
+                {{ item }}
+            </div>
+        </div>
+    </div>
+</form>

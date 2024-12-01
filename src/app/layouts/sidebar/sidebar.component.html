@@ -1,133 +1,53 @@
 <div class="sidebar">
     <!-- Logo Section -->
     <div class="logo">
-        <!-- <img src="https://ssbr-inet-platform.vercel.app/assets/images/global/ssbrlogo.svg" alt="" srcset=""> -->
-        <h3>My App</h3>
+        <a href="">
+            <img src="https://ssbr-inet-platform.vercel.app/assets/images/global/ssbrlogo.svg" alt="" srcset="">
+        </a>
     </div>
 
     <!-- Menu Items -->
     <div class="menu">
-        <div class="menu-group">
-            <h4>Dashboard</h4>
-            <div class="menu-item" [class.active]="activeMenu === 'dashboard'" (click)="toggleDropdown('dashboard')">
-                <span>📊 Dashboard</span>
-                <span [class.rotate]="isOpen['dashboard']">
-                    <mat-icon>keyboard_arrow_down</mat-icon>
-                </span>
-            </div>
-            <div *ngIf="isOpen['dashboard']" @dropdownAnimation>
-                <div class="submenu-item" (click)="setActiveSubmenu('overview')"
-                    [class.active]="activeSubmenu === 'overview'">Overview</div>
-                <div class="submenu-item">Reports</div>
-            </div>
+        <!-- Loop through sections (headings) -->
+        @for (section of menuItems; track $index) {
+        <div>
+            <!-- Heading -->
+            <h4>{{ section.heading }}</h4>
 
-            <div class="menu-item">
-                <span>📦 Components</span>
+            <!-- Loop through menus under each heading -->
+            @for (menu of section.menus; track $index) {
+            <div>
+                <!-- Main Menu Item -->
+                <div class="menu-item" [class.active]="activeMenu === menu.key" (click)="navigate(menu)"
+                    (click)="toggleDropdown(menu.key, !!menu?.children)">
+                    <span>{{ menu.icon }} {{ menu.label }}</span>
+                    <!-- Show dropdown arrow if children exist -->
+
+                    @if (menu.children) {
+                    <span [class.rotate]="isOpen[menu.key]">
+                        <mat-icon>keyboard_arrow_down</mat-icon>
+                    </span>
+                    }
+                </div>
+
+                <!-- Submenu Items -->
+                @if (menu.children && isOpen[menu.key]) {
+                <div @dropdownAnimation>
+                    @for (child of menu.children; track $index) {
+                    <div class="submenu-item" [class.active]="activeSubmenu === child.key"
+                        (click)="setActiveSubmenu(child.key)">
+                        {{ child.label }}
+                    </div>
+                    }
+                </div>
+                }
             </div>
+            }
         </div>
+        }
 
-        <div class="menu-group">
-            <h4>Tutorial</h4>
-            <div class="menu-item" [class.active]="activeMenu === 'Profile'" (click)="toggleDropdown('Profile')">
-                <span>📊 Profile</span>
-                <span [class.rotate]="isOpen['Profile']">
-                    <mat-icon>keyboard_arrow_down</mat-icon>
-                </span>
-            </div>
-            <div *ngIf="isOpen['Profile']" @dropdownAnimation>
-                <div class="submenu-item" (click)="setActiveSubmenu('overview')"
-                    [class.active]="activeSubmenu === 'overview'">Overview</div>
-                <div class="submenu-item">Reports</div>
-                <div class="submenu-item">Overview</div>
-                <div class="submenu-item">Reports</div>
-                <div class="submenu-item">Overview</div>
-                <div class="submenu-item">Reports</div>
-            </div>
-
-            <div class="menu-item">
-                <span>📦 Components</span>
-            </div>
-        </div>
-
-        <div class="menu-group">
-            <h4>Widget</h4>
-            <div class="menu-item">
-                <span>📈 Statistics</span>
-            </div>
-            <div class="menu-item">
-                <span>📄 Data</span>
-            </div>
-            <div class="menu-item">
-                <span>📊 Chart</span>
-            </div>
-        </div>
-
-        <div class="menu-group">
-            <h4>Widget</h4>
-            <div class="menu-item">
-                <span>📈 Statistics</span>
-            </div>
-            <div class="menu-item">
-                <span>📄 Data</span>
-            </div>
-            <div class="menu-item">
-                <span>📊 Chart</span>
-            </div>
-        </div>
-
-        <div class="menu-group">
-            <h4>Widget</h4>
-            <div class="menu-item">
-                <span>📈 Statistics</span>
-            </div>
-            <div class="menu-item">
-                <span>📄 Data</span>
-            </div>
-            <div class="menu-item">
-                <span>📊 Chart</span>
-            </div>
-        </div>
-
-        <div class="menu-group">
-            <h4>Profile</h4>
-            <div class="menu-item" (click)="toggleDropdown('Profile')">
-                <span>📊 Profile</span>
-                <span [class.rotate]="isOpen['Profile']">
-                    <mat-icon>keyboard_arrow_down</mat-icon>
-                </span>
-            </div>
-            <div *ngIf="isOpen['Profile']" @dropdownAnimation>
-                <div class="submenu-item">Overview</div>
-                <div class="submenu-item">Reports</div>
-                <div class="submenu-item">Overview</div>
-                <div class="submenu-item">Reports</div>
-                <div class="submenu-item">Overview</div>
-                <div class="submenu-item">Reports</div>
-            </div>
-
-            <div class="menu-item">
-                <span>📦 Components</span>
-            </div>
-        </div>
-
-        <div class="menu-group">
-            <h4>Admin Panel</h4>
-            <div class="menu-item">
-                <span>📚 Online Courses</span>
-            </div>
-            <div class="menu-item">
-                <span>👤 Membership</span>
-            </div>
-            <div class="menu-item">
-                <span>❓ Helpdesk</span>
-            </div>
-            <div class="menu-item">
-                <span>🧾 Invoice</span>
-            </div>
-        </div>
-
-        <br>
     </div>
+
 
     <!-- Bottom Profile Section -->
     <div class="profile" (click)="toggleProfileMenu()">
