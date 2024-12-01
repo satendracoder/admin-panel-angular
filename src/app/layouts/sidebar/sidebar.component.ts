@@ -21,10 +21,30 @@ import { trigger, transition, style, animate } from '@angular/animations';
   ],
 })
 export class SidebarComponent {
- isOpen: { [key: string]: boolean } = {}; // Tracks dropdown open states
+  isOpen: { [key: string]: boolean } = {}; // Tracks dropdown open states
+   activeMenu: string = ''; // Tracks active main menu
+  activeSubmenu: string = ''; // Tracks active submenu
 
   toggleDropdown(menu: string): void {
-    this.isOpen[menu] = !this.isOpen[menu];
+    // Close all other dropdowns
+  Object.keys(this.isOpen).forEach((key) => {
+    if (key !== menu) {
+      this.isOpen[key] = false;
+    }
+  });
+
+  // Toggle the clicked dropdown
+  this.isOpen[menu] = !this.isOpen[menu];
+  this.setActiveMenu(menu); // Set active menu on toggle
+  }
+
+   setActiveMenu(menu: string): void {
+    this.activeMenu = menu;
+    this.activeSubmenu = ''; // Reset submenu when changing menu
+  }
+
+  setActiveSubmenu(submenu: string): void {
+    this.activeSubmenu = submenu;
   }
 
   toggleProfileMenu(): void {

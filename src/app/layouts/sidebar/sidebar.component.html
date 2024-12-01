@@ -9,14 +9,15 @@
     <div class="menu">
         <div class="menu-group">
             <h4>Dashboard</h4>
-            <div class="menu-item" (click)="toggleDropdown('dashboard')">
+            <div class="menu-item" [class.active]="activeMenu === 'dashboard'" (click)="toggleDropdown('dashboard')">
                 <span>📊 Dashboard</span>
                 <span [class.rotate]="isOpen['dashboard']">
                     <mat-icon>keyboard_arrow_down</mat-icon>
                 </span>
             </div>
             <div *ngIf="isOpen['dashboard']" @dropdownAnimation>
-                <div class="submenu-item">Overview</div>
+                <div class="submenu-item" (click)="setActiveSubmenu('overview')"
+                    [class.active]="activeSubmenu === 'overview'">Overview</div>
                 <div class="submenu-item">Reports</div>
             </div>
 
@@ -27,14 +28,15 @@
 
         <div class="menu-group">
             <h4>Tutorial</h4>
-            <div class="menu-item" (click)="toggleDropdown('Tutorial')">
+            <div class="menu-item" [class.active]="activeMenu === 'Profile'" (click)="toggleDropdown('Profile')">
                 <span>📊 Profile</span>
-                <span [class.rotate]="isOpen['Tutorial']">
+                <span [class.rotate]="isOpen['Profile']">
                     <mat-icon>keyboard_arrow_down</mat-icon>
                 </span>
             </div>
-            <div *ngIf="isOpen['Tutorial']" @dropdownAnimation>
-                <div class="submenu-item">Create Tutorial</div>
+            <div *ngIf="isOpen['Profile']" @dropdownAnimation>
+                <div class="submenu-item" (click)="setActiveSubmenu('overview')"
+                    [class.active]="activeSubmenu === 'overview'">Overview</div>
                 <div class="submenu-item">Reports</div>
                 <div class="submenu-item">Overview</div>
                 <div class="submenu-item">Reports</div>
