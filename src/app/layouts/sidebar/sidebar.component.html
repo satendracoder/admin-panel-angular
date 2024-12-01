@@ -26,15 +26,24 @@
         </div>
 
         <div class="menu-group">
-            <h4>Widget</h4>
-            <div class="menu-item">
-                <span>📈 Statistics</span>
+            <h4>Tutorial</h4>
+            <div class="menu-item" (click)="toggleDropdown('Tutorial')">
+                <span>📊 Profile</span>
+                <span [class.rotate]="isOpen['Tutorial']">
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                </span>
             </div>
-            <div class="menu-item">
-                <span>📄 Data</span>
+            <div *ngIf="isOpen['Tutorial']" @dropdownAnimation>
+                <div class="submenu-item">Create Tutorial</div>
+                <div class="submenu-item">Reports</div>
+                <div class="submenu-item">Overview</div>
+                <div class="submenu-item">Reports</div>
+                <div class="submenu-item">Overview</div>
+                <div class="submenu-item">Reports</div>
             </div>
+
             <div class="menu-item">
-                <span>📊 Chart</span>
+                <span>📦 Components</span>
             </div>
         </div>
 
@@ -61,6 +70,41 @@
             </div>
             <div class="menu-item">
                 <span>📊 Chart</span>
+            </div>
+        </div>
+
+        <div class="menu-group">
+            <h4>Widget</h4>
+            <div class="menu-item">
+                <span>📈 Statistics</span>
+            </div>
+            <div class="menu-item">
+                <span>📄 Data</span>
+            </div>
+            <div class="menu-item">
+                <span>📊 Chart</span>
+            </div>
+        </div>
+
+        <div class="menu-group">
+            <h4>Profile</h4>
+            <div class="menu-item" (click)="toggleDropdown('Profile')">
+                <span>📊 Profile</span>
+                <span [class.rotate]="isOpen['Profile']">
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                </span>
+            </div>
+            <div *ngIf="isOpen['Profile']" @dropdownAnimation>
+                <div class="submenu-item">Overview</div>
+                <div class="submenu-item">Reports</div>
+                <div class="submenu-item">Overview</div>
+                <div class="submenu-item">Reports</div>
+                <div class="submenu-item">Overview</div>
+                <div class="submenu-item">Reports</div>
+            </div>
+
+            <div class="menu-item">
+                <span>📦 Components</span>
             </div>
         </div>
 
@@ -79,6 +123,8 @@
                 <span>🧾 Invoice</span>
             </div>
         </div>
+
+        <br>
     </div>
 
     <!-- Bottom Profile Section -->

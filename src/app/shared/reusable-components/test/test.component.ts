@@ -33,5 +33,6 @@ activeMenu: string = 'profile'; // Tracks active menu (Profile or Settings)
 
   logout() {
     alert("API Not work")
+    this.isDropdownOpen = false;
   }
 }
