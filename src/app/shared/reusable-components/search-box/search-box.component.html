@@ -5,10 +5,18 @@
                 placeholder="Search..." id="searchInput">
             <mat-icon>search</mat-icon>
         </div>
-        <div *ngIf="filteredResults.length > 0" class="dropdown">
-            <div *ngFor="let item of filteredResults" class="dropdown-item" (click)="selectItem(item)">
+
+        @if (filteredResults.length > 0) {
+        <div class="dropdown">
+            @for (item of filteredResults; track $index) {
+            <div class="dropdown-item" (click)="selectItem(item)">
                 {{ item }}
             </div>
+            } @empty {
+            No
+            }
         </div>
+        }
+
     </div>
 </form>
