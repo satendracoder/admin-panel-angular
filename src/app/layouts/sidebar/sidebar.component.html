@@ -35,15 +35,17 @@
 
                 <!-- Submenu Items -->
                 @if (menu.children && isOpen[menu.key]) {
-                <div @dropdownAnimation>
+                <div class="submenu-item_a" @dropdownAnimation>
                     @for (child of menu.children; track $index) {
-                    <div class="submenu-item" [class.active]="activeSubmenu === child.key"
-                        (click)="setActiveSubmenu(child.key)">
-                        <span class="material-symbols-outlined">
-                            {{child?.icon}}
-                        </span>
-                        <span>{{ child.label }}</span>
-                    </div>
+                    <a [routerLink]="child?.url">
+                        <div class="submenu-item" [class.active]="currentUrl === child.url"
+                            (click)="setActiveSubmenu(child.key)">
+                            <span class="material-symbols-outlined">
+                                {{child?.icon}}
+                            </span>
+                            <span>{{ child.label }}</span>
+                        </div>
+                    </a>
                     }
                 </div>
                 }

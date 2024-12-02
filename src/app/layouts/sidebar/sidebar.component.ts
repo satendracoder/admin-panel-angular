@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MateriallistModule } from '../../shared/materiallist/materiallist.module';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 
 @Component({
@@ -26,11 +26,20 @@ export class SidebarComponent implements OnInit{
   isOpen: { [key: string]: boolean } = {}; // Tracks dropdown open states
   activeMenu: string = ''; // Tracks active main menu
   activeSubmenu: string = ''; // Tracks active submenu
+  currentUrl: string = '/dashboard/overview'; // Holds the current URL
 
   router = inject(Router);
 
   ngOnInit(): void {
-    this.toggleDropdown('dashboard', true)
+    this.toggleDropdown('dashboard', true);
+
+    // Subscribe to Router events to track the current URL
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.currentUrl = event.urlAfterRedirects; // Store the current URL
+        this.updateActiveMenu();
+      }
+    });
   }
 
   toggleDropdown(menuKey: string, hasChildren: boolean): void {
@@ -80,7 +89,7 @@ menuItems:any = [
         children: [
           { label: 'Overview Dashboard', key: 'overview',icon:'overview', url: '/dashboard/overview' },
           { label: 'Instructor Dashboard', key: 'instructor',icon:'developer_guide',  url: '/dashboard/instructor'},
-          { label: 'Student Dashboard', key: 'student',icon:'overview', url: '/dashboard/reports' },
+          { label: 'Student Dashboard', key: 'student',icon:'overview', url: '/dashboard/student' },
         ],
       },
     ],
@@ -158,6 +167,27 @@ menuItems:any = [
     ],
   },
 ];
+
+updateActiveMenu(): void {
+    // Match the current URL with the menu or submenu
+    this.menuItems.forEach((section: { menus: any[]; }) => {
+      section.menus.forEach((menu) => {
+        if (menu.url === this.currentUrl) {
+          this.activeMenu = menu.key;
+          this.activeSubmenu = '';
+        }
+        if (menu.children) {
+          menu.children.forEach((child: { url: string; key: string; }) => {
+            if (child.url === this.currentUrl) {
+              this.activeMenu = menu.key; // Set parent menu active
+              this.activeSubmenu = child.key; // Set active submenu
+              this.isOpen[menu.key] = true; // Expand the parent menu
+            }
+          });
+        }
+      });
+    });
+  }
 
 
 navigate(menu: any): void {
