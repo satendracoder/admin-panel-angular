@@ -22,8 +22,8 @@ export class LoginPageComponent {
   constructor() { }
 
   loginForm: FormGroup = new FormGroup<any>({
-    email: new FormControl('', [Validators.email, Validators.required,]),
-    password: new FormControl('', [Validators.minLength(4)])
+    email: new FormControl('satendra@ssbrinet.com', [Validators.email, Validators.required,]),
+    password: new FormControl('123456', [Validators.minLength(4)])
   })
 
   togglePasswordVisibility() {
@@ -35,23 +35,24 @@ export class LoginPageComponent {
     debugger
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
-      this._AuthService.loginUser(this.loginForm.value).subscribe({
-        next: (response) => {
-          console.log("Loging", response);
-          if (response.user.designation === "admin") {
-            this._router.navigate(["/dashboard/overview"]);
-            // sessionStorage.setItem("Admin", response.user.designation);
-            this._toastr.success(`Admin Login Sucessful!`);
-          } else if (response.user.designation === "user") {
-            this._router.navigate(["/dashboard/overview"]);
-            this._toastr.success(`User Login Sucessful!`);
-          }
+        this._router.navigate(["/dashboard/overview"]);
+      // this._AuthService.loginUser(this.loginForm.value).subscribe({
+      //   next: (response) => {
+      //     console.log("Loging", response);
+      //     if (response.user.designation === "admin") {
+      //       this._router.navigate(["/dashboard/overview"]);
+      //       // sessionStorage.setItem("Admin", response.user.designation);
+      //       this._toastr.success(`Admin Login Sucessful!`);
+      //     } else if (response.user.designation === "user") {
+      //       this._router.navigate(["/dashboard/overview"]);
+      //       this._toastr.success(`User Login Sucessful!`);
+      //     }
 
-          this._AuthService.isLoggedIn.update(() => true);
-        }, error: (err) => {
-          this._toastr.error('Email or password is not valid!');
-        },
-      });
+      //     this._AuthService.isLoggedIn.update(() => true);
+      //   }, error: (err) => {
+      //     this._toastr.error('Email or password is not valid!');
+      //   },
+      // });
 
       this.loginForm.reset();
     } else {

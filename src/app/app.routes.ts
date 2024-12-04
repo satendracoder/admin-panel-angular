@@ -7,25 +7,28 @@ export const routes: Routes = [
     
     {
         path: 'dashboard',
-          canActivate: [authGuard],
+        //   canActivate: [authGuard],
         loadComponent: () =>
             import('./layouts/tutorial-layout/tutorial-layout.component')
                 .then((D) => D.TutorialLayoutComponent),
         children: [
             {
                 path: 'overview',
+                title:"Overview-Dashboard",
                 loadComponent: () =>
                 import('./pages/dashboard/overview-dashboard/overview-dashboard.component')
                     .then((Over) => Over.OverviewDashboardComponent)
             },
             {
                 path: 'instructor',
+                title:"Instructor-Dashboard",
                 loadComponent: () =>
                 import('./pages/dashboard/instructor-dashboard/instructor-dashboard.component')
                     .then((instructor) => instructor.InstructorDashboardComponent)
             },
             {
                 path: 'student',
+                title: "Student-Dashboard",
                 loadComponent: () =>
                 import('./pages/dashboard/student-dashboard/student-dashboard.component')
                     .then((student) => student.StudentDashboardComponent)

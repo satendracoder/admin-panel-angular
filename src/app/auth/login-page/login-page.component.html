@@ -11,30 +11,6 @@
         </div>
 
         <div class="login-body">
-
-            <div class="social-login">
-                <button class="social-btn google" title="google">
-                    <span>Google</span>
-                    <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google" />
-                </button>
-                <button class="social-btn facebook" title="facebook">
-                    <span>Facebook</span>
-                    <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook" />
-                </button>
-                <button class="social-btn github" title="github">
-                    <span>Github</span>
-                    <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" alt="Github" />
-                </button>
-                <button class="social-btn feide" title="medium">
-                    <span>Feide</span>
-                    <img src="https://cdn-icons-png.flaticon.com/512/4228/4228703.png" alt="Feide" />
-                </button>
-            </div>
-            <div class="list-card-heading">
-                <span class="line"></span>
-                <span class="text">OR</span>
-                <span class="line"></span>
-            </div>
             <form [formGroup]="loginForm" (ngSubmit)="LoginSumbit()">
                 <input type="email" placeholder="Email" formControlName="email" required />
                 <div *ngIf="email?.touched && email?.invalid" class="error-message">
@@ -57,13 +33,8 @@
                 </div>
 
                 <div class="form-footer">
-                    <a href="#" class="forgot-password">Forgot Password?</a>
                     <button type="submit" class="login-btn" [disabled]="loginForm.invalid">Login</button>
                 </div>
-
-                <p>
-                    Don't have an account? <a href="/sign-up" class="signup-link">Sign up</a>
-                </p>
             </form>
         </div>
 

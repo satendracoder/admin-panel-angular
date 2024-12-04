@@ -36,7 +36,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 15px 0px;
+        padding: 5px 0px;
 
         h2 {
             margin: 0;
@@ -70,68 +70,7 @@
 
     .login-body {
         text-align: center;
-
-        p {
-            padding: 15px 0px;
-        }
-
-        .signup-link {
-            color: #0073e6;
-            text-decoration: none;
-
-            &:hover {
-                color: #26a69a;
-                font-weight: 600;
-            }
-        }
-
-        .social-login {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-
-            .social-btn {
-                display: flex;
-                align-items: center;
-                justify-content: space-around;
-                background: #f5f5f5;
-                border: 1px solid #ddd;
-                border-radius: 5px;
-                padding: 10px;
-                font-size: 14px;
-                cursor: pointer;
-                transition: transform 0.3s;
-
-                &:hover {
-                    transform: translateY(-5px);
-                    border: 1px solid #26a69a;
-                }
-
-                img {
-                    width: 20px;
-                    height: 20px;
-                    margin-left: 10px;
-                }
-            }
-
-            .google {
-                color: #ea4335;
-            }
-
-            .facebook {
-                color: #4267b2;
-            }
-
-            .github {
-                color: #333;
-            }
-
-            .feide {
-                color: #ff9900;
-            }
-
-
-        }
+        padding: 10px 0px;
 
         .or-divider {
             margin: 10px 0;
